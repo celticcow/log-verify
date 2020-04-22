@@ -11,7 +11,7 @@ class loge(object):
         self.source = source
         self.dest = dest
         self.port = port
-        self.count = 0
+        self.count = 1
 
     #accessor
     def get_source(self):

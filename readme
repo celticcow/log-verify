@@ -1,1 +1,5 @@
 extract entry from csv ... determine IP and connect and report
+
+change to arg parse. 
+-f file
+-c yes/no (default) for doing connection test.
