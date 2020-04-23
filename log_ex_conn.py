@@ -86,6 +86,8 @@ def connection_test(loge):
     a_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     location = (loge.get_dest(), int(loge.get_port()))
 
+    a_socket.settimeout(0.5)
+
     result = a_socket.connect_ex(location)
 
     if(result == 0):
