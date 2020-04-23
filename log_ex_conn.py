@@ -5,6 +5,7 @@ import sys
 from loge import loge
 import ipaddress
 import socket
+import argparse
 
 def sanitize_col(str):
     if(('(' in str) and (')' in str)):
@@ -98,8 +99,14 @@ def main():
 
     debug = 1
 
+    parser = argparse.ArgumentParser(description='Log Exctract and Analysis')
+    parser.add_argument("-f", required=True, help="Log File")
+    parser.add_argument("-c", required=False, help="Do a connection to port (yes)")
+
+    args = parser.parse_args()
+
     #inputfile = "telnet.csv"  #sys.argv[1]
-    inputfile = sys.argv[1]
+    inputfile = args.f 
 
     #list of loge
     log_list = list()
@@ -109,10 +116,12 @@ def main():
 
     for en in log_list:
         en.print_log_entry()
-        if(connection_test(en)):
-            print("Port Alive")
-        else:
-            print("Port Not_Found")
+
+        if(args.c == "yes"):
+            if(connection_test(en)):
+                print("Port Alive")
+            else:
+                print("Port Not_Found")
 
 #end of main
 
